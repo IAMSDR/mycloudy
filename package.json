@@ -1,0 +1,23 @@
+{
+  "name": "mycloudy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,magenta \"bun --watch index.ts\" \"bun run --cwd frontend dev\"",
+    "build": "bun run --cwd frontend build",
+    "start": "NODE_ENV=production bun index.ts",
+    "typecheck": "tsc --noEmit && bun run --cwd frontend typecheck"
+  },
+  "dependencies": {
+    "hono": "^4.13.13"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.3",
+    "concurrently": "^10.0.6",
+    "typescript": "^5.9.0"
+  }
+}
